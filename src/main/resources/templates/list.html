@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Title</title>
+</head>
+<body class="mx-5">
+<h3 th:text="|Lista produktów z kategorii: ${productsList.get(0).category.getDescription()}|">Lista produktów</h3>
+<div>
+    <ul>
+        <li th:each="product: ${productsList}" th:text="|Nazwa: ${product.name};
+    Kategoria: ${product.category.getDescription()}; Cena: ${product.price}|"></li>
+    </ul>
+</div>
+<p th:text="|Cena wszystkich produktów z listy to: ${price}|">Cena</p>
+</body>
+</html>

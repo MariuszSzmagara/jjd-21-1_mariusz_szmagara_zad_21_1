@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Title</title>
+</head>
+<body class="mx-5">
+<div>
+    <a th:href="|/productsListByCategory?kategoria=|">Wyświetl wszystkie produkty</a>
+</div>
+<div>
+    <a th:href="|/productsListByCategory?kategoria=Art.spożywcze|">Wyświetl produkty z kategorii: Art. spożywcze</a>
+</div>
+<div>
+    <a th:href="|/productsListByCategory?kategoria=Art.gosp.domowego|">Wyświetl produkty z kategorii: Art. gosp. domowego</a>
+</div>
+<div>
+    <a th:href="|/productsListByCategory?kategoria=Inne|">Wyświetl produkty z kategorii: Inne</a>
+</div>
+</body>
+</html>
