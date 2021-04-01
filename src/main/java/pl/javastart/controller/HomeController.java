@@ -9,7 +9,6 @@ import pl.javastart.data.ProductsRepository;
 import pl.javastart.model.Category;
 import pl.javastart.model.Product;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -28,37 +27,30 @@ public class HomeController {
 
     @PostMapping("/addNewProduct")
     public String addNewProduct(Product product) {
-        boolean addedCorrectly = productsRepository.addProductToList(product);
-        if (addedCorrectly) {
-            return "success";
-        } else {
-            return "error";
-        }
+        productsRepository.addProductToList(product);
+        return "success";
     }
 
     @GetMapping("/productsListByCategory")
     public String getProductsListByCategory(@RequestParam(name = "kategoria") String category, Model model) {
-        List<Product> newProductsList = new ArrayList<>();
-        double price = 0;
+        List<Product> allProductsList = productsRepository.getListOfAllProducts();
+        List<Product> productsListByCategory;
+        double price;
         if (isCategoryCorrect(category)) {
-            for (Product product : productsRepository.getListOfAllProducts()) {
-                if (Category.createFromDescription(category).equals(product.getCategory())) {
-                    newProductsList.add(product);
-                    price += product.getPrice();
-                }
-            }
-            model.addAttribute("productsList", newProductsList);
+            productsListByCategory = productsRepository.getProductsListByCategory(category);
+            price = productsRepository.calculatePriceOfAllProductsInGivenList(productsListByCategory);
+            model.addAttribute("productsList", productsListByCategory);
         } else {
-            for (Product product : productsRepository.getListOfAllProducts()) {
-                price += product.getPrice();
-            }
-            model.addAttribute("productsList", productsRepository.getListOfAllProducts());
+            model.addAttribute("productsList", allProductsList);
+            price = productsRepository.calculatePriceOfAllProductsInGivenList(allProductsList);
         }
         model.addAttribute("price", price);
         return "list";
     }
 
     private boolean isCategoryCorrect(String category) {
-        return category != null && !category.equals("");
+        return Category.FOOD.name().equals(category)
+                || Category.HOME.name().equals(category)
+                || Category.OTHERS.name().equals(category);
     }
 }

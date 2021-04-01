@@ -6,7 +6,7 @@
     <title>Title</title>
 </head>
 <body class="mx-5">
-<h3 th:text="|Lista produktów z kategorii: ${productsList.get(0).category.getDescription()}|">Lista produktów</h3>
+<h3 th:text="|Lista produktów|">Lista produktów</h3>
 <div>
     <ul>
         <li th:each="product: ${productsList}" th:text="|Nazwa: ${product.name};

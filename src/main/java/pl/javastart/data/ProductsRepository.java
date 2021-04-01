@@ -24,7 +24,25 @@ public class ProductsRepository {
         return productsList;
     }
 
-    public boolean addProductToList(Product product) {
-        return productsList.add(product);
+    public void addProductToList(Product product) {
+        productsList.add(product);
+    }
+
+    public List<Product> getProductsListByCategory(String category) {
+        List<Product> productsListByCategory = new ArrayList<>();
+        for (Product product : productsList) {
+            if (product.getCategory().name().equals(category)) {
+                productsListByCategory.add(product);
+            }
+        }
+        return productsListByCategory;
+    }
+
+    public double calculatePriceOfAllProductsInGivenList(List<Product> givenProductsList) {
+        double priceOfAllProducts = 0;
+        for (Product product : givenProductsList) {
+            priceOfAllProducts += product.getPrice();
+        }
+        return priceOfAllProducts;
     }
 }

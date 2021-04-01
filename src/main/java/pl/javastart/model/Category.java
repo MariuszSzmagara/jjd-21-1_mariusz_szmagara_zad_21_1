@@ -1,7 +1,7 @@
 package pl.javastart.model;
 
 public enum Category {
-    FOOD("Art.spożywcze"), HOME("Art.gosp.domowego"), OTHERS("Inne");
+    FOOD("Art. spożywcze"), HOME("Art. gosp. domowego"), OTHERS("Inne");
     private final String description;
 
     Category(String description) {
