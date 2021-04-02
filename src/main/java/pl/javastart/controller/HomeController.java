@@ -32,25 +32,38 @@ public class HomeController {
     }
 
     @GetMapping("/productsListByCategory")
-    public String getProductsListByCategory(@RequestParam(name = "kategoria") String category, Model model) {
-        List<Product> allProductsList = productsRepository.getListOfAllProducts();
-        List<Product> productsListByCategory;
+    public String getProductsListByCategory(@RequestParam(name = "kategoria", required = false) Category category, Model model) {
         double price;
         if (isCategoryCorrect(category)) {
-            productsListByCategory = productsRepository.getProductsListByCategory(category);
-            price = productsRepository.calculatePriceOfAllProductsInGivenList(productsListByCategory);
+            List<Product> productsListByCategory = productsRepository.getProductsListByCategory(category);
+            price = calculatePriceOfAllProductsInGivenList(productsListByCategory);
             model.addAttribute("productsList", productsListByCategory);
         } else {
+            List<Product> allProductsList = productsRepository.getListOfAllProducts();
             model.addAttribute("productsList", allProductsList);
-            price = productsRepository.calculatePriceOfAllProductsInGivenList(allProductsList);
+            price = calculatePriceOfAllProductsInGivenList(allProductsList);
         }
         model.addAttribute("price", price);
+        model.addAttribute("category", category);
         return "list";
     }
 
-    private boolean isCategoryCorrect(String category) {
-        return Category.FOOD.name().equals(category)
-                || Category.HOME.name().equals(category)
-                || Category.OTHERS.name().equals(category);
+    private boolean isCategoryCorrect(Category givenCategory) {
+        boolean categoryCorrect = false;
+        for (Category category : Category.values()) {
+            if (category.equals(givenCategory)) {
+                categoryCorrect = true;
+                break;
+            }
+        }
+        return categoryCorrect;
+    }
+
+    private double calculatePriceOfAllProductsInGivenList(List<Product> givenProductsList) {
+        double priceOfAllProducts = 0;
+        for (Product product : givenProductsList) {
+            priceOfAllProducts += product.getPrice();
+        }
+        return priceOfAllProducts;
     }
 }
