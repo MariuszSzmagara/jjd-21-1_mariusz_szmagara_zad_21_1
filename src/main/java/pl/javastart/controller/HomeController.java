@@ -49,14 +49,7 @@ public class HomeController {
     }
 
     private boolean isCategoryCorrect(Category givenCategory) {
-        boolean categoryCorrect = false;
-        for (Category category : Category.values()) {
-            if (category.equals(givenCategory)) {
-                categoryCorrect = true;
-                break;
-            }
-        }
-        return categoryCorrect;
+        return givenCategory != null;
     }
 
     private double calculatePriceOfAllProductsInGivenList(List<Product> givenProductsList) {

@@ -11,13 +11,4 @@ public enum Category {
     public String getDescription() {
         return description;
     }
-
-    public static Category createFromDescription(String description) {
-        for (Category category : values()) {
-            if (category.getDescription().equalsIgnoreCase(description)) {
-                return category;
-            }
-        }
-        throw new IncorrectCategoryDescriptionException("Nie istnieje taka kategoria jak: " + description);
-    }
 }

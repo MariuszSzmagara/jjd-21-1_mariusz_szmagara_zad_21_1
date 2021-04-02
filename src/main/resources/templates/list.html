@@ -6,7 +6,7 @@
     <title>Title</title>
 </head>
 <body class="mx-5">
-<h3 th:text="|Lista produktów z kategorii: ${category.getDescripion()}|" th:if="${category}">Lista produktów</h3>
+<h3 th:text="|Lista produktów z kategorii: ${category.getDescription()}|" th:if="${category}">Lista produktów</h3>
 <h3 th:text="|Lista wszystkich produktów|" th:unless="${category}">Lista produktów</h3>
 <div>
     <ul>

@@ -7,19 +7,19 @@
 </head>
 <body class="mx-5">
 <div>
-    <a th:href=@{productsListByCategory(kategoria='')}>Wyświetl wszystkie produkty</a>
+    <a th:href="@{productsListByCategory(kategoria='')}">Wyświetl wszystkie produkty</a>
 </div>
 <div>
-    <a th:href=@{productsListByCategory(kategoria=FOOD)}>Wyświetl produkty z kategorii: Art. spożywcze</a>
+    <a th:href="@{productsListByCategory(kategoria=FOOD)}">Wyświetl produkty z kategorii: Art. spożywcze</a>
 </div>
 <div>
-    <a th:href=@{productsListByCategory(kategoria=HOME)}>Wyświetl produkty z kategorii: Art. gosp. domowego</a>
+    <a th:href="@{productsListByCategory(kategoria=HOME)}">Wyświetl produkty z kategorii: Art. gosp. domowego</a>
 </div>
 <div>
-    <a th:href=@{productsListByCategory(kategoria=OTHERS)}>Wyświetl produkty z kategorii: Inne</a>
+    <a th:href="@{productsListByCategory(kategoria=OTHERS)}">Wyświetl produkty z kategorii: Inne</a>
 </div>
 <div>
-    <a th:href=@{createNewProduct}>Dodaj nowy produkt do listy</a>
+    <a th:href="@{createNewProduct}">Dodaj nowy produkt do listy</a>
 </div>
 </body>
 </html>
