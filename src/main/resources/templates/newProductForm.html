@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Nowy produkt</title>
+</head>
+<body class="mx-5">
+<form form action="#" th:action="@{/addNewProduct}" method="post" th:object="${newProduct}">
+    <div class="row">
+        <div class="col">
+            <label for="inputName">Nazwa</label>
+            <input type="text" th:field="*{name}" class="form-control" id="inputName" placeholder="Nazwa">
+        </div>
+        <div class="col">
+            <label for="inputPrice">Cena</label>
+            <input type="number" th:field="*{price}" step="0.1" class="form-control" id="inputPrice" placeholder="Cena">
+        </div>
+        <div class="col">
+            <label for="category">Wybierz kategorię:</label>
+            <select class="form-control" th:field="*{category}" id="category">
+                <option value="FOOD">Art. spożywcze</option>
+                <option value="HOME">Art. gosp. domowego</option>
+                <option value="OTHERS">Inne</option>
+            </select>
+        </div>
+        <div class="col">
+            <label for="inputSubmit">Dodaj!</label>
+            <div>
+                <button type="submit" class="btn btn-primary mb-5" id="inputSubmit">Submit</button>
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+</html>
